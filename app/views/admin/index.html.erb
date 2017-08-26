@@ -1,0 +1,22 @@
+<h1>Admin page</h1><br>
+
+<%= link_to 'Index', statistics_path, class: 'button success radius expand'  %> <br>
+
+<%= link_to 'Create round', new_round_path, class: 'button success radius expand'  %> <br>
+
+<%= link_to 'Players', players_path, class: 'button success radius expand'   %> <br>
+
+<%= link_to 'Teams', teams_path, class: 'button success radius expand'  %>  <br>
+
+<%= link_to 'Register player', new_player_path, class: 'button success radius expand' %><br>
+
+<%= link_to 'Register team', new_team_path, class: 'button success radius expand'  %> <br>
+
+<%= link_to "Update Achievements for all players", achievement_check_all_path, method: :post, data: {confirm: "Detta tar lång tid att exekvera, säker på att du vill fortsätta?"}, class: 'button success radius expand' %>
+
+<%= link_to 'Logout', logout_path, method: :delete, class: 'button alert radius expand' %>
+
+
+
+
+

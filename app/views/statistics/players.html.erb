@@ -1,0 +1,71 @@
+<h1>Players - All time</h1>
+
+<table width="100%">
+  <thead>
+  <tr>
+    <th>Spelare:</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>P</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>Streak</th>
+    <th>B</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @player_stats_sorted.each do |pstat| %>
+      <tr>
+        <td width="200"><%= link_to "#{pstat["player_name"].name}", "players/#{pstat["player_name"].id}" %></td>
+        <td width="25"><%= pstat["games_played"] %></td>
+        <td width="25"><%= pstat["wins"] %></td>
+        <td width="25"><%= pstat["losses"] %></td>
+        <td width="25"><%= pstat["ties"] %></td>
+        <td width="25"><%= pstat["points"] %></td>
+        <td width="25"><%= pstat["goals_for"] %></td>
+        <td width="25"><%= pstat["goals_against"] %></td>
+        <td width="25"><%= pstat["streak"] %></td>
+        <td width="25"><%= pstat["balance"] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h1>Players - Last time</h1>
+
+<table width="100%">
+  <thead>
+  <tr>
+    <th>Spelare:</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>P</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>B</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @player_stats_last_sorted.each do |pstat| %>
+      <tr>
+        <td width="200"><%= link_to "#{pstat["player_name"].name}", "players/#{pstat["player_name"].id}" %></td>
+        <td width="25"><%= pstat["games_played"] %></td>
+        <td width="25"><%= pstat["wins"] %></td>
+        <td width="25"><%= pstat["losses"] %></td>
+        <td width="25"><%= pstat["ties"] %></td>
+        <td width="25"><%= pstat["points"] %></td>
+        <td width="25"><%= pstat["goals_for"] %></td>
+        <td width="25"><%= pstat["goals_against"] %></td>
+        <td width="25"><%= pstat["balance"] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', statistics_path, class: 'button success radius expand' %>

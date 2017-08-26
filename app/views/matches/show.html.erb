@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Home:</strong>
+  <%= @match.teams.map(&:name)[0] %><br>
+  <%= @match.home %>
+</p>
+
+<p>
+  <strong>Away:</strong>
+  <%= @match.teams.map(&:name)[1] %><br>
+  <%= @match.away %><br>
+</p>
+<p>
+	<strong>Events:</strong>
+<% @match.events.each do |event| %>
+	<%= event.match_id %><br>
+	<%= event.title %><br>
+	<%= event.message %><br>
+	<%= event.created_at %>
+<% end %>
+</p>
+
+
+<p><%= @match.created_at %></p>
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>

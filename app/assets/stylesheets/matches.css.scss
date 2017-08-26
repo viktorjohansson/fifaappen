@@ -1,0 +1,37 @@
+// Place all the styles related to the matches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.match_form {
+
+}
+
+#events {
+	position: fixed;
+	right: 5px;
+	top: 5px;
+	width: 350px;
+	height: 400px;
+	float: right;
+	display: none;
+	background: #008cba;
+	color: #ffffff;
+	border-radius: 10px;
+	padding-top: 10px;
+	border: 1px solid #ccc;
+	z-index: 111;
+	font-size: 30px;
+	opacity: 0.8;
+}
+#events h1, h3 {
+	color: #ffffff;
+}
+
+h3.achievement {
+	color: black;
+}
+
+.matches {
+	margin-top: 0px;
+	z-index: -5;
+}

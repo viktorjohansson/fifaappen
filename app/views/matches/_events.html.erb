@@ -1,0 +1,5 @@
+<% @match.events.each do |event| %>
+	<h1><%= event.title %>Meddelande:</h1>
+  <h3><%= event.message %></h3>
+  <h3><%= event.table_changes %></h3>
+<% end %>

@@ -1,0 +1,50 @@
+/* line 5, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+#masonry-container {
+  background: #FFF;
+  width: auto;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 17, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+/* line 18, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/* line 19, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+.clearfix {
+  zoom: 1;
+}
+
+/* line 21, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+.col3 {
+  width: 308px;
+  height: auto;
+  overflow: auto;
+}
+
+/* line 31, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+.post_image {
+  position: relative;
+  height: auto;
+  overflow: auto;
+  float: left;
+}
+
+/* line 38, /vagrant/lifeachievements/app/assets/stylesheets/posts.scss */
+img {
+  width: 308 !important;
+  height: auto;
+  overflow: hidden;
+}

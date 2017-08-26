@@ -1,0 +1,8 @@
+<h4><%= @team.name %></h4>
+Players:
+<% @team.players.each do |p| %>
+    <%= p.name %>
+<% end %>
+<br><br>
+<%= link_to 'Edit', edit_team_path(@team), class: 'button success radius expand' %> <br>
+<%= link_to 'Back', teams_path, class: 'button success radius expand'  %>

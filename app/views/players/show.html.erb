@@ -1,0 +1,175 @@
+
+<h1><%= @player.name %> - All time</h1>
+
+<table width="100%">
+  <thead>
+  <tr>
+    <th>Spelare:</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>P</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>Streak</th>
+    <th>B</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @all_time_player.each do |player| %>
+      <tr>
+        <td width="200"><%= link_to "#{player["player"].name}", "players/#{player["player"].id}" %></td>
+        <td width="25"><%= player["player_stats"].wins + player["player_stats"].losses + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins %></td>
+        <td width="25"><%= player["player_stats"].losses %></td>
+        <td width="25"><%= player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins * 3 + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].goals_for %></td>
+        <td width="25"><%= player["player_stats"].goals_against %></td>
+        <td width="25">
+			<% if player["player_stats"].win_streak > 0 %>
+			Won <%= player["player_stats"].win_streak %></td> <% end %>
+			<% if player["player_stats"].lose_streak > 0 %>
+			Lost <%= player["player_stats"].lose_streak %></td> <% end %>
+			<% if player["player_stats"].tie_streak > 0 %>
+			Tied <%= player["player_stats"].tie_streak %></td> <% end %>
+        <td width="25"><%= player["player_stats"].balance %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<h1><%= @player.name %> - Last Season</h1>
+
+<table width="100%">
+  <thead>
+  <tr>
+    <th>Spelare:</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>P</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>Streak</th>
+    <th>B</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @last_season_player.each do |player| %>
+      <tr>
+        <td width="200"><%= link_to "#{player["player"].name}", "players/#{player["player"].id}" %></td>
+        <td width="25"><%= player["player_stats"].wins + player["player_stats"].losses + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins %></td>
+        <td width="25"><%= player["player_stats"].losses %></td>
+        <td width="25"><%= player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins * 3 + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].goals_for %></td>
+        <td width="25"><%= player["player_stats"].goals_against %></td>
+        <td width="25">
+			<% if player["player_stats"].win_streak > 0 %>
+			Won <%= player["player_stats"].win_streak %></td> <% end %>
+			<% if player["player_stats"].lose_streak > 0 %>
+			Lost <%= player["player_stats"].lose_streak %></td> <% end %>
+			<% if player["player_stats"].tie_streak > 0 %>
+			Tied <%= player["player_stats"].tie_streak %></td> <% end %>
+        <td width="25"><%= player["player_stats"].balance %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<h1><%= @player.name %> - Last Time</h1>
+
+<table width="100%">
+  <thead>
+  <tr>
+    <th>Spelare:</th>
+    <th>GP</th>
+    <th>W</th>
+    <th>L</th>
+    <th>T</th>
+    <th>P</th>
+    <th>GF</th>
+    <th>GA</th>
+    <th>Streak</th>
+    <th>B</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @last_time_player.each do |player| %>
+      <tr>
+        <td width="200"><%= link_to "#{player["player"].name}", "players/#{player["player"].id}" %></td>
+        <td width="25"><%= player["player_stats"].wins + player["player_stats"].losses + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins %></td>
+        <td width="25"><%= player["player_stats"].losses %></td>
+        <td width="25"><%= player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins * 3 + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].goals_for %></td>
+        <td width="25"><%= player["player_stats"].goals_against %></td>
+        <td width="25">
+			<% if player["player_stats"].win_streak > 0 %>
+			Won <%= player["player_stats"].win_streak %></td> <% end %>
+			<% if player["player_stats"].lose_streak > 0 %>
+			Lost <%= player["player_stats"].lose_streak %></td> <% end %>
+			<% if player["player_stats"].tie_streak > 0 %>
+			Tied <%= player["player_stats"].tie_streak %></td> <% end %>
+        <td width="25"><%= player["player_stats"].balance %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<h3> Walk of Fame</h3>
+ <% @achievements.each do |achievement| %>
+    <% if achievement[0]["type"] == "fame" %>
+        <div class="achievementwrapper">
+        <div class="achievementicon"><%=if achievement[1] == 0
+                                          image_tag(achievement[0]["img"], size: "32")
+                                        else
+                                          image_tag("locked.png", size: "32")
+                                        end%></div>
+        <div class="achievementname"><strong><%= achievement[0]["name"] %></strong><div class="achievementscore"><strong><%= achievement[0]["score"] %>P</strong></div></div>
+        <div class="achievementdescription"><%= achievement[0]["description"] %></div>
+      </div>
+    <% end %>
+<% end %>
+<h3> Walk of Shame</h3>
+<% @achievements.each do |achievement| %>
+    <% if achievement[0]["type"] == "shame" %>
+        <div class="achievementwrapper">
+          <div class="achievementicon"><%=if achievement[1] == 0
+                                            image_tag(achievement[0]["img"], size: "32")
+                                          else
+                                            image_tag("locked.png", size: "32")
+                                          end%></div>
+          <div class="achievementnameshame"><strong><%= achievement[0]["name"] %></strong><div class="achievementscore"><strong><%= achievement[0]["score"] %>P</strong></div></div>
+          <div class="achievementdescription"><%= achievement[0]["description"] %></div>
+        </div>
+    <% end %>
+<% end %>
+<br>
+
+<table width="100%">
+  <tbody>
+      <% @player.sorted_matches.each_with_index do |g, index| %>
+          <tr>
+            <td width="100"><strong>Match <%= index+1 %></strong></td><td></td>
+          </tr>
+          <tr>
+            <td>Home: <%= g.home %></td>
+            <td><strong><%= g.teams[0].name %></strong> (<%= g.teams[0].players.map(&:name).join(', ') %>)</td>
+          </tr>
+          <tr>
+            <td>Away: <%= g.away %></td>
+            <td><strong><%= g.teams[1].name %></strong> (<%= g.teams[1].players.map(&:name).join(', ') %>)</td>
+          </tr>
+      <% end  %>
+  </tbody>
+</table>
+<br>
+
+<%= link_to "Update Achievements", player_achievement_check_path(@player), method: :post, class: 'button success radius expand' %>
+<%= link_to 'Edit', edit_player_path(@player), class: 'button success radius expand' %> <br>
+<%= link_to 'Back', players_path, class: 'button success radius expand'  %>

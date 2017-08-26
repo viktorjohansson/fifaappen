@@ -1,0 +1,78 @@
+<h3>Name: <%= @player.name %></h3>
+<strong>Teams:</strong>
+<% @teams.each do |t| %>
+    <td><%= t.name %></td>
+<% end %>
+
+<br><br>
+<table width="100%">
+  <tbody>
+  <tr>
+    <td><strong>Balance: </strong> <%= @balance %>:-</br>
+
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Games played: </strong><%= @games%>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Total points: </strong><%= @points = @wins.inject(:+) * 3 + @ties.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Average points: </strong><%= @points.fdiv(@games).round(2) %></td>
+  </tr>
+  <tr>
+    <td><strong>Wins: </strong><%= @wins.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Losses: </strong><%= @losses.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Ties: </strong><%= @ties.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Goals for: </strong><%= @goals_for.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Goals against: </strong><%= @goals_against.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Goal difference: </strong><%= @goals_for.inject(:+) - @goals_against.inject(:+) %></td>
+  </tr>
+  <tr>
+    <td><strong>Average goals for: </strong><%= @goals_for.inject(:+).fdiv(@games).round(2) %></td>
+  </tr>
+  <tr>
+    <td><strong>Average goals against: </strong><%= @goals_against.inject(:+).fdiv(@games).round(2) %></td>
+  </tr>
+  <tr>
+    <td><strong>Streak: </strong><%= @streak[1] %> <%= @streak[0] %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<table width="100%">
+  <tbody>
+      <% @player.sorted_matches.each_with_index do |g, index| %>
+          <tr>
+            <td width="100"><strong>Match <%= index+1 %></strong></td><td></td>
+          </tr>
+          <tr>
+            <td>Home: <%= g.home %></td>
+            <td><strong><%= g.teams[0].name %></strong> (<%= g.teams[0].players.map(&:name).join(', ') %>)</td>
+          </tr>
+          <tr>
+            <td>Away: <%= g.away %></td>
+            <td><strong><%= g.teams[1].name %></strong> (<%= g.teams[1].players.map(&:name).join(', ') %>)</td>
+          </tr>
+      <% end  %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', :back, class: 'button success radius expand' %>
+
+
+

@@ -1,0 +1,6 @@
+$("#events").html("<%= escape_javascript(render(:partial => "events")) %>");
+$("#events").fadeOut(0);
+$("#events").fadeIn(1000);
+$("#events").delay(8000);
+$("#events").fadeOut(1000);
+$("#scoreboard").html("<%= escape_javascript(render(:partial => "statistics/score_board")) %>");

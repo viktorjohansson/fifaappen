@@ -1,0 +1,47 @@
+<h1>Match</h1>
+<div id="events">
+	<%= render partial: "matches/events" %>
+</div>
+<div class="matches" id="matches">
+	<!-- only display matches for rounds created 12 hours ago -->
+<% if @round.created_at > Time.now - 16.hours %>
+	<% @schedule.each do |match| %>
+ 
+
+	    <% @player_one = Player.find(match[0]).teams %>
+	    <% @player_two = Player.find(match[1]).teams %>
+	    <% @player_three = Player.find(match[2]).teams %>
+	    <% @player_four = Player.find(match[3]).teams %>
+
+	    <% @players = [@player_one, @player_two, @player_three, @player_four] %>
+
+	    <% @players[0].each do |team0|
+	      @team0 = team0
+	      @players[1].each do |team1|
+	        @team1 = team1
+	        if @team0 == @team1
+	          @team_one = @team0.id
+	        end
+	      end
+	    end %>
+
+	   <% @players[2].each do |team0|
+	     @team0 = team0
+	     @players[3].each do |team1|
+	       @team1 = team1
+	       if @team0 == @team1
+	         @team_two = @team0.id
+	       end
+	     end
+	   end %>
+		<div class="match">
+	    	<%= render 'test' %><br>
+		</div>
+
+	<% end %>
+<% end %>
+</div>
+<div id="scoreboard">
+	<%= render partial: 'statistics/score_board'%>
+</div>
+<%= link_to 'New Round', new_round_path, class: 'button success radius expand' %>

@@ -1,0 +1,35 @@
+<br>
+<h3 class="achievement"> Walk of Fame</h3>
+<br>
+ <% @achievement_array.each do |achievement| %>
+    <% if achievement[0]["type"] == "fame" %>
+        <div class="achievementwrapper">
+        <div class="achievementicon"><%=if achievement[1] != nil
+                                          image_tag(achievement[0]["img"], size: "32")
+                                        else
+                                          image_tag("locked.png", size: "32")
+                                        end%></div>
+        <div class="achievementname"><strong><%= achievement[0]["name"] %></strong><div class="achievementscore"><strong><%= achievement[0]["score"] %>P</strong></div></div>
+        <div class="achievementdescription"><%= achievement[0]["description"] %></div>
+		<div class="achievementplayers"><%= achievement[1].join(", ")%></div>
+      </div>
+    <% end %>
+<% end %>
+<br>
+<h3 class="achievement"> Walk of Shame</h3>
+<br>
+<% @achievement_array.each do |achievement| %>
+    <% if achievement[0]["type"] == "shame" %>
+        <div class="achievementwrapper">
+          <div class="achievementicon"><%=if achievement[1] != nil
+                                            image_tag(achievement[0]["img"], size: "32")
+                                          else
+                                            image_tag("locked.png", size: "32")
+                                          end%></div>
+          <div class="achievementnameshame"><strong><%= achievement[0]["name"] %></strong><div class="achievementscore"><strong><%= achievement[0]["score"] %>P</strong></div></div>
+          <div class="achievementdescription"><%= achievement[0]["description"] %></div>
+		  <div class="achievementplayers"><%= achievement[1].join(", ")%></div>
+        </div>
+    <% end %>
+<% end %>
+<br>

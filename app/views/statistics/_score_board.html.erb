@@ -1,0 +1,41 @@
+<h1>Dagens statistik</h1>
+
+<table width="100%" class="footable table">
+  <thead>
+  <tr>
+    <td>Spelare:</th>
+    <td>GP</th>
+    <td>W</th>
+    <td>L</th>
+    <td>T</th>
+    <td>P</th>
+    <td>GF</th>
+    <td>GA</th>
+    <td>Streak</th>
+    <td>B</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @last_time_players_sorted_ajax.each do |player| %>
+      <tr>
+        <td width="200"><%= link_to "#{player["player"].name}", "players/#{player["player"].id}" %></td>
+        <td width="25"><%= player["player_stats"].wins + player["player_stats"].losses + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins %></td>
+        <td width="25"><%= player["player_stats"].losses %></td>
+        <td width="25"><%= player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].wins * 3 + player["player_stats"].ties %></td>
+        <td width="25"><%= player["player_stats"].goals_for %></td>
+        <td width="25"><%= player["player_stats"].goals_against %></td>
+        <td width="25">
+			<% if player["player_stats"].win_streak > 0 %>
+			Won <%= player["player_stats"].win_streak %></td> <% end %>
+			<% if player["player_stats"].lose_streak > 0 %>
+			Lost <%= player["player_stats"].lose_streak %></td> <% end %>
+			<% if player["player_stats"].tie_streak > 0 %>
+			Tied <%= player["player_stats"].tie_streak %></td> <% end %>
+        <td width="25"><%= player["player_stats"].balance %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
